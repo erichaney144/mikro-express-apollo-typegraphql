@@ -1,0 +1,37 @@
+{
+	"name": "mikro-express-apollo-typegraphql",
+	"version": "1.0.0",
+	"main": "server.js",
+	"author": "Eric Haney",
+	"license": "MIT",
+	"scripts": {
+		"build": "npm run clean && tsc",
+		"clean": "rm -rf dist",
+		"watch": "echo 'Rebuilding dist and watching for changes...' && tsc -w",
+		"dev:distro": "NODE_PATH=dist; echo 'Starting dist & watching...' && nodemon ./dist/server.js",
+		"mig:gen": "npx mikro-orm migration:create --",
+		"start": "NODE_PATH=dist; node dist/server.js"
+	},
+	"dependencies": {
+		"@apollo/server": "^4.2.2",
+		"@mikro-orm/cli": "^5.5.3",
+		"@mikro-orm/core": "^5.5.3",
+		"@mikro-orm/migrations": "^5.5.3",
+		"@mikro-orm/postgresql": "^5.5.3",
+		"@mikro-orm/reflection": "^5.5.3",
+		"class-validator": "^0.13.2",
+		"cors": "^2.8.5",
+		"graphql": "^16.6.0",
+		"type-graphql": "next"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.12",
+		"@types/node": "^18.11.9",
+		"eslint": "^8.28.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"nodemon": "^2.0.20",
+		"prettier": "^2.8.0",
+		"typescript": "^4.9.3"
+	}
+}

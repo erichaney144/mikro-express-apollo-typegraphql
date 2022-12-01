@@ -1,0 +1,3 @@
+interface MyContext {
+	token?: String;
+}
