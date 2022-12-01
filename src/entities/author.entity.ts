@@ -10,7 +10,7 @@ import {
 import AuthorValidator from 'contracts/validators/author.validator';
 import { Field, ObjectType } from 'type-graphql';
 import { Base } from 'utils/entities/base.entity';
-import { Book } from './book.entity';
+import { Book } from 'entities/book.entity';
 
 @ObjectType()
 @Entity()

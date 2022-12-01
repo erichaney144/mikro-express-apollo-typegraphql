@@ -14,7 +14,8 @@ import { AuthorResolver } from 'resolvers/author.resolvers';
 import { BookResolver } from 'resolvers/book.resolvers';
 import { PublisherType } from 'contracts/enums/publisherType.enum';
 import { MikroORM } from '@mikro-orm/postgresql';
-import config from './mikro-orm.config';
+import config from 'mikro-orm.config';
+import { MyContext } from 'utils/interfaces/context.interface';
 
 const server = async () => {
   // Create a database connection and initialize the ORM
@@ -50,7 +51,7 @@ const server = async () => {
 		// expressMiddleware accepts the same arguments:
 		// an Apollo Server instance and optional configuration options
 		expressMiddleware(server, {
-			context: async ({ req }) => ({ token: req.headers.token }),
+			context: async ({ req, res }) => ({ req: req, res: res, em: orm.em.fork() }),
 		})
 	);
 

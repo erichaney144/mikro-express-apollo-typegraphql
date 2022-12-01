@@ -1,6 +1,6 @@
 // https://github.com/bnussman/graphql-fields-to-relations
 import { GraphQLResolveInfo } from 'graphql';
-import { graphqlFields } from './fields';
+import { graphqlFields } from 'utils/graphql-fields-to-relations/fields';
 
 export const fieldsToRelations = (
 	info: GraphQLResolveInfo,
@@ -18,7 +18,8 @@ export const fieldsToRelations = (
 		deep = 0,
 		parent: string[] = []
 	) => {
-		if (Object.values(field).length === 0) {
+		console.log("field",field)
+		if (!field || Object.values(field).length === 0) {
 			return;
 		}
 

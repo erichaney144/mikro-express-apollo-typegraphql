@@ -9,7 +9,9 @@
 		"clean": "rm -rf dist",
 		"watch": "echo 'Rebuilding dist and watching for changes...' && tsc -w",
 		"dev:distro": "NODE_PATH=dist; echo 'Starting dist & watching...' && nodemon ./dist/server.js",
-		"mig:gen": "npx mikro-orm migration:create --",
+		"mig:gen": "export NODE_PATH=dist; yarn mikro-orm migration:create",
+		"mig:run": "export NODE_PATH=dist; yarn mikro-orm migration:up",
+		"mig:down": "export NODE_PATH=dist; yarn mikro-orm migration:down",
 		"start": "NODE_PATH=dist; node dist/server.js"
 	},
 	"dependencies": {
