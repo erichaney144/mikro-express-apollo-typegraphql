@@ -12,11 +12,12 @@ import { GraphQLSchema } from 'graphql';
 import { buildSchema, registerEnumType } from 'type-graphql';
 import { AuthorResolver } from 'resolvers/author.resolvers';
 import { BookResolver } from 'resolvers/book.resolvers';
+import { ReaderResolver } from 'resolvers/reader.resolvers';
 import { PublisherType } from 'contracts/enums/publisherType.enum';
 import { MikroORM } from '@mikro-orm/postgresql';
 import config from 'mikro-orm.config';
 import { MyContext } from 'utils/interfaces/context.interface';
-import { ReaderResolver } from 'resolvers/reader.resolvers';
+import { SearchResolver } from 'resolvers/search.resolvers';
 
 const server = async () => {
   // Create a database connection and initialize the ORM
@@ -24,7 +25,7 @@ const server = async () => {
 
   // Build the graphql schema with type-graphql
 	const schema: GraphQLSchema = await buildSchema({
-		resolvers: [AuthorResolver, BookResolver, ReaderResolver],
+		resolvers: [AuthorResolver, BookResolver, ReaderResolver, SearchResolver],
 	});
 
 	// Required logic for integrating with Express

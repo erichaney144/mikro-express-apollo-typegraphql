@@ -8,11 +8,11 @@
 		"build": "npm run clean && tsc",
 		"clean": "rm -rf dist",
 		"watch": "echo 'Rebuilding dist and watching for changes...' && tsc -w",
-		"dev:distro": "NODE_PATH=dist; echo 'Starting dist & watching...' && nodemon ./dist/server.js",
+		"dev:distro": "export NODE_PATH=dist; echo 'Starting dist & watching...' && nodemon ./dist/server.js",
 		"mig:gen": "export NODE_PATH=dist; yarn mikro-orm migration:create",
 		"mig:run": "export NODE_PATH=dist; yarn mikro-orm migration:up",
 		"mig:down": "export NODE_PATH=dist; yarn mikro-orm migration:down",
-		"start": "NODE_PATH=dist; node dist/server.js"
+		"start": "export NODE_PATH=dist; node dist/server.js"
 	},
 	"dependencies": {
 		"@apollo/server": "^4.2.2",
