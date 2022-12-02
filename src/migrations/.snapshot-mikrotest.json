@@ -105,6 +105,19 @@
           "length": 6,
           "mappedType": "datetime"
         },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "author",
+            "reader"
+          ],
+          "mappedType": "enum"
+        },
         "name": {
           "name": "name",
           "type": "varchar(255)",
@@ -123,18 +136,8 @@
           "nullable": false,
           "mappedType": "string"
         },
-        "born": {
-          "name": "born",
-          "type": "timestamptz(0)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "length": 6,
-          "mappedType": "datetime"
-        },
-        "favourite_book_id": {
-          "name": "favourite_book_id",
+        "favorite_book_id": {
+          "name": "favorite_book_id",
           "type": "int",
           "unsigned": false,
           "autoincrement": false,
@@ -143,20 +146,29 @@
           "mappedType": "integer"
         }
       },
-      "name": "author",
+      "name": "person",
       "schema": "public",
       "indexes": [
+        {
+          "columnNames": [
+            "type"
+          ],
+          "composite": false,
+          "keyName": "person_type_index",
+          "primary": false,
+          "unique": false
+        },
         {
           "columnNames": [
             "email"
           ],
           "composite": false,
-          "keyName": "author_email_unique",
+          "keyName": "person_email_unique",
           "primary": false,
           "unique": true
         },
         {
-          "keyName": "author_pkey",
+          "keyName": "person_pkey",
           "columnNames": [
             "id"
           ],
@@ -167,12 +179,12 @@
       ],
       "checks": [],
       "foreignKeys": {
-        "author_favourite_book_id_foreign": {
-          "constraintName": "author_favourite_book_id_foreign",
+        "person_favorite_book_id_foreign": {
+          "constraintName": "person_favorite_book_id_foreign",
           "columnNames": [
-            "favourite_book_id"
+            "favorite_book_id"
           ],
-          "localTableName": "public.author",
+          "localTableName": "public.person",
           "referencedColumnNames": [
             "id"
           ],
@@ -265,7 +277,7 @@
           "referencedColumnNames": [
             "id"
           ],
-          "referencedTableName": "public.author",
+          "referencedTableName": "public.person",
           "deleteRule": "cascade",
           "updateRule": "cascade"
         },

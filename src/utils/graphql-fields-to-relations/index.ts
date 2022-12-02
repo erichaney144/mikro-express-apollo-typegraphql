@@ -18,7 +18,6 @@ export const fieldsToRelations = (
 		deep = 0,
 		parent: string[] = []
 	) => {
-		console.log("field",field)
 		if (!field || Object.values(field).length === 0) {
 			return;
 		}

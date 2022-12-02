@@ -16,6 +16,7 @@ import { PublisherType } from 'contracts/enums/publisherType.enum';
 import { MikroORM } from '@mikro-orm/postgresql';
 import config from 'mikro-orm.config';
 import { MyContext } from 'utils/interfaces/context.interface';
+import { ReaderResolver } from 'resolvers/reader.resolvers';
 
 const server = async () => {
   // Create a database connection and initialize the ORM
@@ -23,7 +24,7 @@ const server = async () => {
 
   // Build the graphql schema with type-graphql
 	const schema: GraphQLSchema = await buildSchema({
-		resolvers: [AuthorResolver, BookResolver],
+		resolvers: [AuthorResolver, BookResolver, ReaderResolver],
 	});
 
 	// Required logic for integrating with Express

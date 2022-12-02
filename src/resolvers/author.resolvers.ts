@@ -4,7 +4,7 @@ import ormFindOptions from 'strategies/resolveInfoToOrmFindOptions';
 import { Arg, Ctx, Info, Mutation, Query, Resolver } from 'type-graphql';
 import { MyContext } from 'utils/interfaces/context.interface';
 import { Author } from 'entities/author.entity';
-import AuthorValidator from 'contracts/validators/author.validator';
+import PersonValidator from 'contracts/validators/person.validator';
 
 @Resolver(() => Author)
 export class AuthorResolver {
@@ -30,7 +30,7 @@ export class AuthorResolver {
 
 	@Mutation(() => Author)
 	public async addAuthor(
-		@Arg('input') input: AuthorValidator,
+		@Arg('input') input: PersonValidator,
 		@Ctx() ctx: MyContext
 	): Promise<Author> {
 		const author = new Author(input);
@@ -40,7 +40,7 @@ export class AuthorResolver {
 
 	@Mutation(() => Author)
 	public async updateAuthor(
-		@Arg('input') input: AuthorValidator,
+		@Arg('input') input: PersonValidator,
 		@Arg('id') id: number,
 		@Ctx() ctx: MyContext,
 		@Info() info: GraphQLResolveInfo

@@ -4,7 +4,9 @@ import { TSMigrationGenerator } from '@mikro-orm/migrations'
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection'
 import { Author } from 'entities/author.entity'
 import { Book } from 'entities/book.entity'
+import { Person } from 'entities/person.entity'
 import { Publisher } from 'entities/publisher.entity'
+import { Reader } from 'entities/reader.entity'
 import { Tag } from 'entities/tag.entity'
 
 const config: Options = {
@@ -15,7 +17,7 @@ const config: Options = {
 	dbName: process.env.POSTGRES_DB || 'mikrotest',
 	host: process.env.POSTGRES_HOST || 'localhost',
 	port: 5432,
-	entities: [Author, Book, Publisher, Tag],
+	entities: [Person, Author, Reader, Book, Publisher, Tag],
 	//entitiesTs: [User],
 	//entitiesTs: ['./src/entities'],
 	migrations: {
